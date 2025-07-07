@@ -16,6 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import solbin.project.salary.util.CustomResponseUtil;
 
+// check : JWT 관련 설정
 @Configuration
 public class SecurityConfig {
 
