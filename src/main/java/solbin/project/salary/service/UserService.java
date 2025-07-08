@@ -19,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
 
+    @Transactional
     public JoinResDto join(JoinReqDto dto) {
         // 1. 이메일 중복 검사
         Optional<User> userOP = userRepository.findByEmail(dto.getEmail());

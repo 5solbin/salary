@@ -22,6 +22,7 @@ public class User {
     private String email;
     private String password;
     private String name;
+    private UserEnum role;
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -29,12 +30,14 @@ public class User {
     private LocalDateTime updatedAt;
 
     @Builder
-    public User(LocalDateTime createdAt, String email, Long id, String name, String password, LocalDateTime updatedAt) {
+    public User(LocalDateTime createdAt, String email, Long id, String name, String password, UserEnum role, LocalDateTime updatedAt) {
         this.createdAt = createdAt;
         this.email = email;
         this.id = id;
         this.name = name;
         this.password = password;
+        this.role = role;
         this.updatedAt = updatedAt;
     }
+
 }

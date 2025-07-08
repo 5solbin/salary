@@ -24,7 +24,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/login")
+    @PostMapping("/join")
     public ResponseEntity<?> login(@RequestBody JoinReqDto joinReqDto, BindingResult result) {
 
         if (result.hasErrors()) {

@@ -2,6 +2,7 @@ package solbin.project.salary.dummy;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.UserEnum;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +28,7 @@ public class DummyObject {
                 .email(email)
                 .password(encodedPassword)
                 .name(name)
+                .role(UserEnum.USER)
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();

@@ -49,7 +49,7 @@ class UserControllerTest extends DummyObject {
 
         //when
         ResultActions resultActions = mvc
-                .perform(MockMvcRequestBuilders.post("/api/login")
+                .perform(MockMvcRequestBuilders.post("/api/join")
                         .content(requestBody).contentType(MediaType.APPLICATION_JSON));
         String responseBody = resultActions.andReturn().getResponse().getContentAsString();
         System.out.println("테스트 : " + responseBody);
@@ -69,13 +69,11 @@ class UserControllerTest extends DummyObject {
         String requestBody = om.writeValueAsString(dto);
         //when
         ResultActions resultActions = mvc
-                .perform(MockMvcRequestBuilders.post("/api/login")
+                .perform(MockMvcRequestBuilders.post("/api/join")
                         .content(requestBody).contentType(MediaType.APPLICATION_JSON));
 
         //then
         resultActions.andExpect(status().isBadRequest());
     }
-
-
 
 }

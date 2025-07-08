@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
@@ -14,6 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import solbin.project.salary.config.jwt.JwtAuthenticationFilter;
+import solbin.project.salary.config.jwt.JwtAuthorizationFilter;
 import solbin.project.salary.util.CustomResponseUtil;
 
 // check : JWT 관련 설정
@@ -29,7 +33,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
         log.debug("디버그 : SecurityFilterChain 등록됨");
 
         // iframe 허용을 안하기 위한 설정 (다른 페이지가 삽입되지 않도록 한다.)
@@ -46,6 +55,8 @@ public class SecurityConfig {
         // 팝업창 인증 해제
         http.httpBasic(AbstractHttpConfigurer::disable);
 
+        http.addFilter(new JwtAuthenticationFilter(authenticationManager));
+        http.addFilter(new JwtAuthorizationFilter(authenticationManager));
 
         // 인증 실패
         http.exceptionHandling(h -> h.authenticationEntryPoint((request, response, oauthException) ->
