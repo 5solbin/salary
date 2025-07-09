@@ -16,6 +16,7 @@ public class DummyObject {
                 .email(email)
                 .password(encodedPassword)
                 .name(name)
+                .role(UserEnum.USER)
                 .build();
     }
 
