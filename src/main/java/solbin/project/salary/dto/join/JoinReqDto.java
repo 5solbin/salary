@@ -5,9 +5,13 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import solbin.project.salary.domain.User;
-import solbin.project.salary.domain.UserEnum;
+import solbin.project.salary.domain.user.User;
+import solbin.project.salary.domain.user.UserEnum;
 
+/**
+ *  JoinReqDto - 회원가입 요청 DTO
+ *  Validation 포함
+ */
 
 @Getter @Setter
 public class JoinReqDto {

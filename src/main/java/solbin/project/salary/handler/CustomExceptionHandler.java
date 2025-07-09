@@ -11,6 +11,11 @@ import solbin.project.salary.handler.ex.CustomApiException;
 import solbin.project.salary.handler.ex.CustomForbiddenException;
 import solbin.project.salary.handler.ex.CustomValidationException;
 
+/**
+ * 예외 처리를 전역에서 제어할 수 있는 Handler 클래스
+ *
+ * ApiException, ForbiddenException, ValidationException 세가지로 구성돼있다.
+ */
 @RestControllerAdvice
 public class CustomExceptionHandler {
 

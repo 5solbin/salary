@@ -18,6 +18,13 @@ import solbin.project.salary.service.UserService;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * UserController
+ *
+ * Json 형태를 반환하기 위한 RestController 설정
+ * Post 방식의 회원가입 페이지 포함
+ */
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")

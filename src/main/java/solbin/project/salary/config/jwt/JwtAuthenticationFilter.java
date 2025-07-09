@@ -19,6 +19,12 @@ import solbin.project.salary.util.CustomResponseUtil;
 
 import java.io.IOException;
 
+/**
+ * Jwt 인증 필터
+ * UsernamePasswordAuthenticationFilter를 구현해서 username과 password를 통해서 인증을 진행할 수 있게 했다.
+ * 인증을 진행하는 과정, 인증을 성공했을때, 실패했을때의 메서드 구현
+ */
+
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
@@ -31,6 +37,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     // Post 방식
+    // 요청 정보를 읽어서 강제로 토큰을 발급하고, 인증을 진행한다.
+    // 위 과정에서 에러가 발생한다면 예외를 반환한다.
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
@@ -52,6 +60,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         CustomResponseUtil.fail(response,"로그인 실패", HttpStatus.UNAUTHORIZED);
     }
 
+    // 인증을 성공했을 때 토큰을 생성하고, success를 반환한다.
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         LoginUser loginUser = (LoginUser) authResult.getPrincipal();

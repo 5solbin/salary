@@ -4,11 +4,14 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import solbin.project.salary.config.auth.LoginUser;
-import solbin.project.salary.domain.User;
-import solbin.project.salary.domain.UserEnum;
+import solbin.project.salary.domain.user.User;
+import solbin.project.salary.domain.user.UserEnum;
 
 import java.util.Date;
 
+/**
+ * 토근을 생성, 검증하는 로직을 담고 있는 JwtProcess 클래스
+ */
 public class JwtProcess {
 
     // 토큰 생성

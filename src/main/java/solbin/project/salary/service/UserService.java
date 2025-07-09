@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.user.User;
 import solbin.project.salary.dto.join.JoinReqDto;
 import solbin.project.salary.dto.join.JoinResDto;
 import solbin.project.salary.handler.ex.CustomApiException;

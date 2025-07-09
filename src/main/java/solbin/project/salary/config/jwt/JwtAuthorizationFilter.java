@@ -15,6 +15,11 @@ import solbin.project.salary.config.auth.LoginUser;
 
 import java.io.IOException;
 
+/**
+ * JWT 인가 필터
+ *  BasicAuthenticationFilter 구현
+ *  토큰이 유효한 토큰인지 확인하는 메서드 포함
+ */
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private final Logger log = LoggerFactory.getLogger(getClass());

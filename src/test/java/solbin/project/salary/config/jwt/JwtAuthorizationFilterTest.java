@@ -9,8 +9,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import solbin.project.salary.config.auth.LoginUser;
-import solbin.project.salary.domain.User;
-import solbin.project.salary.domain.UserEnum;
+import solbin.project.salary.domain.user.User;
+import solbin.project.salary.domain.user.UserEnum;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

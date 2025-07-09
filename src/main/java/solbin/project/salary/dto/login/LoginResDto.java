@@ -2,8 +2,11 @@ package solbin.project.salary.dto.login;
 
 import lombok.Getter;
 import lombok.Setter;
-import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.user.User;
 
+/**
+ *  LoginResDto - 로그인 응답 DTO
+ */
 @Getter @Setter
 public class LoginResDto {
     private Long id;

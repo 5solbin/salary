@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import solbin.project.salary.dto.ResponseDto;
 
+/**
+ * 로그인 상황에서의 반환을 제어하는 클래스
+ * 예외를 백엔드 측에서 직접 제어해서 문제점을 보다 쉽게 찾을 수 있도록 한다.
+ */
 public class CustomResponseUtil {
 
     private static final Logger log = LoggerFactory.getLogger(CustomResponseUtil.class);

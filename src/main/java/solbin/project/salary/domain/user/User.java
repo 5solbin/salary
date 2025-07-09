@@ -1,4 +1,4 @@
-package solbin.project.salary.domain;
+package solbin.project.salary.domain.user;
 
 import jakarta.persistence.*;
 import lombok.Builder;

@@ -2,8 +2,11 @@ package solbin.project.salary.dto.join;
 
 import lombok.Getter;
 import lombok.Setter;
-import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.user.User;
 
+/**
+ *  JoinResDto - 회원가입 응답 DTO
+ */
 @Getter @Setter
 public class JoinResDto {
 

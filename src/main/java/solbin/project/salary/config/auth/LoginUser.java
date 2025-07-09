@@ -4,12 +4,17 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
+/**
+ * 인증된 사용자 정보를 나타내는 LoginUser
+ * UserDetails를 구현
+ * boolean 정보는 우선 전부 true 반환
+ * username(email), password,authority 정보 반환
+ */
 @Getter
 @RequiredArgsConstructor
 public class LoginUser implements UserDetails {

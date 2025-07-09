@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import solbin.project.salary.domain.User;
+import solbin.project.salary.domain.user.User;
 import solbin.project.salary.dto.join.JoinReqDto;
 import solbin.project.salary.dto.join.JoinResDto;
 import solbin.project.salary.dummy.DummyObject;

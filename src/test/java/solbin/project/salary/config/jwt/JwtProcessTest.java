@@ -3,8 +3,8 @@ package solbin.project.salary.config.jwt;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import solbin.project.salary.config.auth.LoginUser;
-import solbin.project.salary.domain.User;
-import solbin.project.salary.domain.UserEnum;
+import solbin.project.salary.domain.user.User;
+import solbin.project.salary.domain.user.UserEnum;
 
 import static org.junit.jupiter.api.Assertions.*;
 

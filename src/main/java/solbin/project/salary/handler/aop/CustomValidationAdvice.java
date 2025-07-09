@@ -12,6 +12,11 @@ import solbin.project.salary.handler.ex.CustomValidationException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *  AOP(관점 지향 프로그래밍) 을 적용하기 위한 코드
+ *  정보가 작성되는 Post, Put의 과정에서 제어가 들어간다.
+ *  joinPoint의 전후에서 유효성 검사를 진행한다.
+ */
 @Aspect
 @Component
 public class CustomValidationAdvice {
