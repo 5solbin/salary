@@ -10,7 +10,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-// check : role 과 같은 추가 옵션
 @Entity
 @NoArgsConstructor
 @Getter
@@ -27,6 +26,7 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String name;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserEnum role;
 

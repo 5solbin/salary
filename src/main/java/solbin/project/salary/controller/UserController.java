@@ -1,5 +1,6 @@
 package solbin.project.salary.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/join")
-    public ResponseEntity<?> login(@RequestBody JoinReqDto joinReqDto, BindingResult result) {
+    public ResponseEntity<?> join(@RequestBody @Valid JoinReqDto joinReqDto, BindingResult result) {
 
         if (result.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
