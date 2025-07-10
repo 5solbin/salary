@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solbin.project.salary.dto.ResponseDto;
-import solbin.project.salary.dto.join.JoinReqDto;
-import solbin.project.salary.dto.join.JoinResDto;
+import solbin.project.salary.dto.user.join.JoinReqDto;
+import solbin.project.salary.dto.user.join.JoinResDto;
 import solbin.project.salary.service.UserService;
 
 import java.util.HashMap;

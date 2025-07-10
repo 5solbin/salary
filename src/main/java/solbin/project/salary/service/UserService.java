@@ -5,8 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import solbin.project.salary.domain.user.User;
-import solbin.project.salary.dto.join.JoinReqDto;
-import solbin.project.salary.dto.join.JoinResDto;
+import solbin.project.salary.dto.user.join.JoinReqDto;
+import solbin.project.salary.dto.user.join.JoinResDto;
 import solbin.project.salary.handler.ex.CustomApiException;
 import solbin.project.salary.repository.UserRepository;
 
@@ -32,5 +32,6 @@ public class UserService {
         userRepository.save(user);
         return new JoinResDto(user);
     }
+
 
 }

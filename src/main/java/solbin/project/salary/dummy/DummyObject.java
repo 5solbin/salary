@@ -3,6 +3,7 @@ package solbin.project.salary.dummy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.user.UserEnum;
+import solbin.project.salary.domain.worklog.Worklog;
 
 import java.time.LocalDateTime;
 
@@ -39,4 +40,27 @@ public class DummyObject {
                 .updatedAt(LocalDateTime.now())
                 .build();
     }
+
+    protected Worklog newWorklog(User user,LocalDateTime start, LocalDateTime end) {
+
+        return Worklog.builder()
+                .startTime(start)
+                .endTime(end)
+                .user(user)
+                .build();
+
+    }
+
+    protected Worklog newMcokWorklog(Long worklogId,User user,LocalDateTime start, LocalDateTime end) {
+
+        return Worklog.builder()
+                .id(worklogId)
+                .startTime(start)
+                .endTime(end)
+                .user(user)
+                .build();
+
+    }
+
+
 }

@@ -8,8 +8,8 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import solbin.project.salary.domain.user.User;
-import solbin.project.salary.dto.join.JoinReqDto;
-import solbin.project.salary.dto.join.JoinResDto;
+import solbin.project.salary.dto.user.join.JoinReqDto;
+import solbin.project.salary.dto.user.join.JoinResDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.handler.ex.CustomApiException;
 import solbin.project.salary.repository.UserRepository;
@@ -43,7 +43,7 @@ class UserServiceTest extends DummyObject {
         when(userRepository.findByEmail(any())).thenReturn(Optional.empty());
 
         // stub 2
-        User user = newMockUser(1L, "bean@naver.com", "빈");
+        User user = newUser( "bean@naver.com", "빈");
         when(userRepository.save(any())).thenReturn(user);
 
         //when

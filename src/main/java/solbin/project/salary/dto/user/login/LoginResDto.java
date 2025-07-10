@@ -1,4 +1,4 @@
-package solbin.project.salary.dto.login;
+package solbin.project.salary.dto.user.login;
 
 import lombok.Getter;
 import lombok.Setter;

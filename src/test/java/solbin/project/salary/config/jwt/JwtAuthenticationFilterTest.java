@@ -11,7 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import solbin.project.salary.dto.login.LoginReqDto;
+import solbin.project.salary.dto.user.login.LoginReqDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.repository.UserRepository;
 

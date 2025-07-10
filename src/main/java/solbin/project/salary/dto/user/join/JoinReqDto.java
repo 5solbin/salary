@@ -1,4 +1,4 @@
-package solbin.project.salary.dto.join;
+package solbin.project.salary.dto.user.join;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;

@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import solbin.project.salary.domain.worklog.Worklog;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -37,6 +40,9 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Worklog> workLogs =  new ArrayList<>();
+
     @Builder
     public User(LocalDateTime createdAt, String email, Long id, String name, String password, UserEnum role, LocalDateTime updatedAt) {
         this.createdAt = createdAt;
@@ -46,6 +52,12 @@ public class User {
         this.password = password;
         this.role = role;
         this.updatedAt = updatedAt;
+    }
+
+    //== 연관관계 메서드 ==//
+    public void addWorkLog(Worklog workLog) {
+        workLogs.add(workLog);
+        workLog.assignUser(this);
     }
 
 }

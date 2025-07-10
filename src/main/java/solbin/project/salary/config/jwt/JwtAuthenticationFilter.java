@@ -13,8 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import solbin.project.salary.config.auth.LoginUser;
-import solbin.project.salary.dto.login.LoginReqDto;
-import solbin.project.salary.dto.login.LoginResDto;
+import solbin.project.salary.dto.user.login.LoginReqDto;
+import solbin.project.salary.dto.user.login.LoginResDto;
 import solbin.project.salary.util.CustomResponseUtil;
 
 import java.io.IOException;

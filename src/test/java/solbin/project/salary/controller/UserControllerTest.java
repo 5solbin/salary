@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import solbin.project.salary.dto.join.JoinReqDto;
+import solbin.project.salary.dto.user.join.JoinReqDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.repository.UserRepository;
 
