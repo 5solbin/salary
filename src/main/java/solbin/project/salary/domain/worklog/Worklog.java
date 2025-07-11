@@ -8,6 +8,7 @@ import solbin.project.salary.domain.user.User;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
 import solbin.project.salary.handler.ex.CustomApiException;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -51,6 +52,10 @@ public class Worklog {
     public void update(UpdateReqDto dto) {
         this.startTime = dto.getStartTime();
         this.endTime = dto.getEndTime();
+    }
+
+    public Long getWorktime() {
+        return Duration.between(this.startTime, this.endTime).toHours();
     }
 
 }

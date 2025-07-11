@@ -5,12 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import solbin.project.salary.config.auth.LoginUser;
 import solbin.project.salary.dto.ResponseDto;
 import solbin.project.salary.dto.worklog.add.AddReqDto;
 import solbin.project.salary.dto.worklog.add.AddResDto;
+import solbin.project.salary.dto.worklog.monthly.GetMonthlyReqDto;
+import solbin.project.salary.dto.worklog.monthly.GetMonthlyResDto;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
 import solbin.project.salary.dto.worklog.update.UpdateResDto;
 import solbin.project.salary.service.WorklogService;
@@ -39,6 +40,12 @@ public class WorklogController {
     public ResponseEntity<?> updateWorklog(@PathVariable Long worklogId, @RequestBody @Valid UpdateReqDto updateReqDto) {
         UpdateResDto updateResDto = worklogService.updateWorklog(worklogId, updateReqDto);
         return new ResponseEntity<>(new ResponseDto<>(1, "근무 기록 변경 성공", updateResDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/s/worklog/getMonthlyInfo")
+    public ResponseEntity<?> getMonthlyInfo(@AuthenticationPrincipal LoginUser user, @ModelAttribute GetMonthlyReqDto getMonthlyReqDto) {
+        GetMonthlyResDto getMonthlyResDto = worklogService.getMonthlyInfo(user.getUser().getId(), getMonthlyReqDto);
+        return new ResponseEntity<>(new ResponseDto<>(1, "근무 기록 조회 성공", getMonthlyResDto), HttpStatus.OK);
     }
 
 }
