@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import solbin.project.salary.controller.UserController;
+import solbin.project.salary.controller.WorklogController;
 import solbin.project.salary.dto.ResponseDto;
 import solbin.project.salary.handler.ex.CustomApiException;
 import solbin.project.salary.handler.ex.CustomForbiddenException;
@@ -16,7 +18,7 @@ import solbin.project.salary.handler.ex.CustomValidationException;
  *
  * ApiException, ForbiddenException, ValidationException 세가지로 구성돼있다.
  */
-@RestControllerAdvice
+@RestControllerAdvice(annotations = {RestControllerAdvice.class}, basePackageClasses =  {WorklogController.class, UserController.class})
 public class CustomExceptionHandler {
 
     Logger log = LoggerFactory.getLogger(getClass());

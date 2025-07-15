@@ -1,5 +1,6 @@
 package solbin.project.salary.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/join")
+    @Operation(summary = "회원가입")
     public ResponseEntity<?> join(@RequestBody @Valid JoinReqDto joinReqDto, BindingResult result) {
 
         if (result.hasErrors()) {
