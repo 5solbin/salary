@@ -9,8 +9,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import solbin.project.salary.config.auth.LoginUser;
 import solbin.project.salary.dto.ResponseDto;
-import solbin.project.salary.dto.worklog.add.AddReqDto;
-import solbin.project.salary.dto.worklog.add.AddResDto;
+import solbin.project.salary.dto.worklog.add.AddWorklogReqDto;
+import solbin.project.salary.dto.worklog.add.AddWorklogResDto;
 import solbin.project.salary.dto.worklog.monthly.GetMonthlyReqDto;
 import solbin.project.salary.dto.worklog.monthly.GetMonthlyResDto;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
@@ -26,9 +26,9 @@ public class WorklogController {
 
     @PostMapping("/s/worklog")
     @Operation(summary = "근무 내역 저장")
-    public ResponseEntity<?> saveWorklog(@RequestBody @Valid AddReqDto addReqDto
+    public ResponseEntity<?> saveWorklog(@RequestBody @Valid AddWorklogReqDto addReqDto
             , @AuthenticationPrincipal LoginUser user) {
-        AddResDto addResDto = worklogService.addWorklog(user.getUser().getId(), addReqDto);
+        AddWorklogResDto addResDto = worklogService.addWorklog(user.getUser().getId(), addReqDto);
         return new ResponseEntity<>(new ResponseDto<>(1, "근무 기록 등록 성공", addResDto), HttpStatus.CREATED);
     }
 

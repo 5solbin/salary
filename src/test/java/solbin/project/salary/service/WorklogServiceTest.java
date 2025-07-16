@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
-import solbin.project.salary.dto.worklog.add.AddReqDto;
-import solbin.project.salary.dto.worklog.add.AddResDto;
+import solbin.project.salary.dto.worklog.add.AddWorklogReqDto;
+import solbin.project.salary.dto.worklog.add.AddWorklogResDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.repository.UserRepository;
 import solbin.project.salary.repository.WorklogRepository;
@@ -34,7 +34,7 @@ class WorklogServiceTest extends DummyObject {
     @Test
     public void 근무기록_추가() throws Exception{
         //given
-        AddReqDto addReqDto = new AddReqDto();
+        AddWorklogReqDto addReqDto = new AddWorklogReqDto();
         addReqDto.setStartTime(LocalDateTime.of(2025, 7, 10, 9, 0, 0));
         addReqDto.setEndTime(LocalDateTime.of(2025, 7, 10, 18, 0, 0));
 
@@ -48,7 +48,7 @@ class WorklogServiceTest extends DummyObject {
         when(worklogRepository.save(any())).thenReturn(worklog);
 
         //when
-        AddResDto addResDto = worklogService.addWorklog(1L, addReqDto);
+        AddWorklogResDto addResDto = worklogService.addWorklog(1L, addReqDto);
         System.out.println("테스트 : " + addResDto.getStartTime());
         System.out.println("테스트 : " + addResDto.getEndTime());
 

@@ -14,10 +14,10 @@ public class GetMonthlyResDto {
     private Long salary;
 
 
-    public GetMonthlyResDto(String date, Map<String, List<DailyInfo>> days, Long totalTime) {
+    public GetMonthlyResDto(String date, Map<String, List<DailyInfo>> days, Long totalTime, Long salary) {
         this.date = date;
         this.days = days;
-        this.salary = totalTime * 10000;
+        this.salary = salary;
         this.totalTime = totalTime;
     }
 }
