@@ -3,7 +3,7 @@ package solbin.project.salary.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.dto.jobtype.add.AddJobTypeReqDto;
 import solbin.project.salary.dto.jobtype.add.AddJobTypeResDto;

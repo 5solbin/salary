@@ -2,7 +2,7 @@ package solbin.project.salary.dto.jobtype.update;
 
 import lombok.Getter;
 import lombok.Setter;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 
 @Getter @Setter
 public class UpdateJobTypeResDto {

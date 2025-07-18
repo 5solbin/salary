@@ -1,4 +1,4 @@
-package solbin.project.salary.domain;
+package solbin.project.salary.domain.jobtype;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -45,6 +45,7 @@ public class JobType {
 
     public void addWorklog(Worklog worklog) {
         worklogs.add(worklog);
+        worklog.assignJobType(this);
     }
 
     public void update(UpdateJobTypeReqDto reqDto) {

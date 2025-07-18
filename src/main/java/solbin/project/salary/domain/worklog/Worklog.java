@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
 import solbin.project.salary.handler.ex.CustomApiException;

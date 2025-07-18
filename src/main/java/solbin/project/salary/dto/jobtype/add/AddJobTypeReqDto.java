@@ -2,7 +2,7 @@ package solbin.project.salary.dto.jobtype.add;
 
 import lombok.Getter;
 import lombok.Setter;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 
 @Getter

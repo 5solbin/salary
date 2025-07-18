@@ -1,7 +1,7 @@
 package solbin.project.salary.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 
 import java.util.List;

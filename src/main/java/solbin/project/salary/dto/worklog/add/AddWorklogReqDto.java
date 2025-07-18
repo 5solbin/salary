@@ -3,7 +3,7 @@ package solbin.project.salary.dto.worklog.add;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
-import solbin.project.salary.domain.JobType;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
 
