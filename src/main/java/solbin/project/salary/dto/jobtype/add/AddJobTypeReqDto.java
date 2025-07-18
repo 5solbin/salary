@@ -1,4 +1,4 @@
-package solbin.project.salary.dto.jobtype;
+package solbin.project.salary.dto.jobtype.add;
 
 import lombok.Getter;
 import lombok.Setter;

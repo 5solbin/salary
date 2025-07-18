@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solbin.project.salary.config.auth.LoginUser;
 import solbin.project.salary.dto.ResponseDto;
-import solbin.project.salary.dto.jobtype.AddJobTypeReqDto;
-import solbin.project.salary.dto.jobtype.AddJobTypeResDto;
+import solbin.project.salary.dto.jobtype.add.AddJobTypeReqDto;
+import solbin.project.salary.dto.jobtype.add.AddJobTypeResDto;
 import solbin.project.salary.service.JobTypeService;
 
 @RestController

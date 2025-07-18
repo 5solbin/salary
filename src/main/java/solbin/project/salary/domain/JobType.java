@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
+import solbin.project.salary.dto.jobtype.update.UpdateJobTypeReqDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,10 @@ public class JobType {
 
     public void addWorklog(Worklog worklog) {
         worklogs.add(worklog);
+    }
+
+    public void update(UpdateJobTypeReqDto reqDto) {
+        this.name = reqDto.getName();
+        this.payRate = reqDto.getPayRate();
     }
 }

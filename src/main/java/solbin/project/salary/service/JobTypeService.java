@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import solbin.project.salary.domain.JobType;
 import solbin.project.salary.domain.user.User;
-import solbin.project.salary.dto.jobtype.AddJobTypeReqDto;
-import solbin.project.salary.dto.jobtype.AddJobTypeResDto;
+import solbin.project.salary.dto.jobtype.add.AddJobTypeReqDto;
+import solbin.project.salary.dto.jobtype.add.AddJobTypeResDto;
+import solbin.project.salary.dto.jobtype.update.UpdateJobTypeReqDto;
+import solbin.project.salary.dto.jobtype.update.UpdateJobTypeResDto;
 import solbin.project.salary.handler.ex.CustomApiException;
 import solbin.project.salary.repository.JobTypeRepository;
 import solbin.project.salary.repository.UserRepository;
@@ -48,6 +50,17 @@ public class JobTypeService {
 
         // 응답 DTO 반환
         return new  AddJobTypeResDto(jobType);
+    }
+
+    @Transactional
+    public UpdateJobTypeResDto updateJobType(UpdateJobTypeReqDto reqDto) {
+
+        JobType jobType = jobTypeRepository.findById(reqDto.getJobTypeId()).orElseThrow(
+                () -> new CustomApiException("존재하지 않는 정보 입니다.")
+        );
+
+        jobType.update(reqDto);
+        return new UpdateJobTypeResDto(jobType);
     }
 
 
