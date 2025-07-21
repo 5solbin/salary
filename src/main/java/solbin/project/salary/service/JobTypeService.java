@@ -63,5 +63,14 @@ public class JobTypeService {
         return new UpdateJobTypeResDto(jobType);
     }
 
+    @Transactional
+    public void deleteJobType(Long jobTypeId) {
+        JobType jobType = jobTypeRepository.findById(jobTypeId).orElseThrow(
+                () -> new CustomApiException("존재하지 않는 정보 입니다.")
+        );
+
+        jobTypeRepository.delete(jobType);
+    }
+
 
 }
