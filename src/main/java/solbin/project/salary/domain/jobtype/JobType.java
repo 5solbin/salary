@@ -23,7 +23,7 @@ public class JobType {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Worklog> worklogs = new ArrayList<>();
 
     private String name;
@@ -31,12 +31,11 @@ public class JobType {
     private Long payRate;
 
     @Builder
-    public JobType(Long id, String name, Long payRate, User user, List<Worklog> worklogs) {
+    public JobType(Long id, String name, Long payRate, User user) {
         this.id = id;
         this.name = name;
         this.payRate = payRate;
         this.user = user;
-        this.worklogs = worklogs;
     }
 
     public void assignUser(User user) {

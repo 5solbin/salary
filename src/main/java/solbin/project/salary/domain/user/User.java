@@ -42,7 +42,7 @@ public class User {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Worklog> workLogs =  new ArrayList<>();
+    private List<Worklog> worklogs =  new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<JobType> jobTypes = new ArrayList<>();
@@ -60,7 +60,7 @@ public class User {
 
     //== 연관관계 메서드 ==//
     public void addWorkLog(Worklog workLog) {
-        workLogs.add(workLog);
+        worklogs.add(workLog);
         workLog.assignUser(this);
     }
 

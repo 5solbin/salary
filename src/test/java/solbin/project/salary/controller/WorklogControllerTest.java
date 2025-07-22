@@ -14,11 +14,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
-import solbin.project.salary.dto.worklog.add.AddReqDto;
+import solbin.project.salary.dto.worklog.add.AddWorklogReqDto;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
 import solbin.project.salary.dummy.DummyObject;
+import solbin.project.salary.repository.JobTypeRepository;
 import solbin.project.salary.repository.UserRepository;
 import solbin.project.salary.repository.WorklogRepository;
 
@@ -43,6 +45,8 @@ class WorklogControllerTest extends DummyObject {
     private ObjectMapper om;
     @Autowired
     private EntityManager em;
+    @Autowired
+    private JobTypeRepository jobTypeRepository;
 
     @BeforeEach
     public void setup() {
@@ -54,9 +58,10 @@ class WorklogControllerTest extends DummyObject {
     @Test
     public void 근무기록_추가() throws Exception {
         //given
-        AddReqDto addReqDto = new AddReqDto();
+        AddWorklogReqDto addReqDto = new AddWorklogReqDto();
         addReqDto.setStartTime(LocalDateTime.of(2025, 7, 10, 9, 0, 0));
         addReqDto.setEndTime(LocalDateTime.of(2025, 7, 10, 18, 0, 0));
+        addReqDto.setJobTypeId(1L);
 
         String requestBody = om.writeValueAsString(addReqDto);
 
@@ -113,6 +118,11 @@ class WorklogControllerTest extends DummyObject {
         LocalDateTime start1 = LocalDateTime.of(2025, 7, 8, 9, 0, 0);
         LocalDateTime end1 = LocalDateTime.of(2025, 7, 8, 18, 0, 0);
         Worklog first = worklogRepository.save(newWorklog(aaa, start1, end1));
+        JobType jobType = JobType.builder()
+                .name("치킨집")
+                .payRate(10000L)
+                .build();
+        jobTypeRepository.save(jobType);
     }
 
 }

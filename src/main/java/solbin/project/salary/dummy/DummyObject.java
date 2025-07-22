@@ -1,6 +1,7 @@
 package solbin.project.salary.dummy;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.user.UserEnum;
 import solbin.project.salary.domain.worklog.Worklog;
@@ -60,6 +61,13 @@ public class DummyObject {
                 .user(user)
                 .build();
 
+    }
+
+    protected JobType newJobType(String name, Long payRate) {
+        return JobType.builder()
+                .name(name)
+                .payRate(payRate)
+                .build();
     }
 
 

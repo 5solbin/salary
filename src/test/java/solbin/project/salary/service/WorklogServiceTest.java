@@ -5,11 +5,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
 import solbin.project.salary.dto.worklog.add.AddWorklogReqDto;
 import solbin.project.salary.dto.worklog.add.AddWorklogResDto;
 import solbin.project.salary.dummy.DummyObject;
+import solbin.project.salary.repository.JobTypeRepository;
 import solbin.project.salary.repository.UserRepository;
 import solbin.project.salary.repository.WorklogRepository;
 
@@ -30,6 +32,8 @@ class WorklogServiceTest extends DummyObject {
     private WorklogRepository worklogRepository;
     @Mock
     private UserRepository userRepository;
+    @Mock
+    private JobTypeRepository jobTypeRepository;
 
     @Test
     public void 근무기록_추가() throws Exception{
@@ -37,11 +41,15 @@ class WorklogServiceTest extends DummyObject {
         AddWorklogReqDto addReqDto = new AddWorklogReqDto();
         addReqDto.setStartTime(LocalDateTime.of(2025, 7, 10, 9, 0, 0));
         addReqDto.setEndTime(LocalDateTime.of(2025, 7, 10, 18, 0, 0));
+        addReqDto.setJobTypeId(1L);
+
+        JobType jobType = newJobType("치킨", 10000L);
 
         User user = newUser("test@naver.com", "테스트");
 
         //stub1
         when(userRepository.findById(any())).thenReturn(Optional.of(user));
+        when(jobTypeRepository.findById(any())).thenReturn(Optional.of(jobType));
 
         // stub2
         Worklog worklog = newWorklog(user,addReqDto.getStartTime(),addReqDto.getEndTime());
