@@ -17,6 +17,7 @@ import solbin.project.salary.dto.user.join.JoinReqDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.repository.UserRepository;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Sql("classpath:db/teardown.sql")
@@ -76,6 +77,46 @@ class UserControllerTest extends DummyObject {
 
         //then
         resultActions.andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void 이름똑바로쓰기() throws Exception{
+        //given
+        JoinReqDto dto = new JoinReqDto();
+        dto.setPassword("password");
+        dto.setName("!@#$!@#");
+        dto.setEmail("sss@naver.com");
+
+        String requestBody = om.writeValueAsString(dto);
+
+        //when
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.post("/api/join")
+                .content(requestBody).contentType(MediaType.APPLICATION_JSON));
+
+        //then
+        resultActions
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.data.name").value("한글/영문 1~20자 이내로 작성해주세요"));
+    }
+
+    @Test
+    public void 이메일똑바로쓰기() throws Exception{
+        //given
+        JoinReqDto dto = new JoinReqDto();
+        dto.setPassword("password");
+        dto.setName("sol");
+        dto.setEmail("ssssdfa");
+
+        String requestBody = om.writeValueAsString(dto);
+
+        //when
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.post("/api/join")
+                .content(requestBody).contentType(MediaType.APPLICATION_JSON));
+
+        //then
+        resultActions
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.data.email").value("이메일 형식으로 작성해 주세요"));
     }
 
 }

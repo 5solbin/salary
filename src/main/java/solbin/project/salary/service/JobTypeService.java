@@ -72,5 +72,4 @@ public class JobTypeService {
         jobTypeRepository.delete(jobType);
     }
 
-
 }
