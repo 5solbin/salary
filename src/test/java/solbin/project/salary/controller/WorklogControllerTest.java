@@ -18,6 +18,7 @@ import solbin.project.salary.domain.jobtype.JobType;
 import solbin.project.salary.domain.user.User;
 import solbin.project.salary.domain.worklog.Worklog;
 import solbin.project.salary.dto.worklog.add.AddWorklogReqDto;
+import solbin.project.salary.dto.worklog.monthly.GetMonthlyReqDto;
 import solbin.project.salary.dto.worklog.update.UpdateReqDto;
 import solbin.project.salary.dummy.DummyObject;
 import solbin.project.salary.repository.JobTypeRepository;
@@ -110,19 +111,43 @@ class WorklogControllerTest extends DummyObject {
         resultActions.andExpect(status().isOk());
     }
 
+    @WithUserDetails(value = "aaa@naver.com" , setupBefore = TestExecutionEvent.TEST_EXECUTION)
+    @Test
+    public void 근무기록_조회() throws Exception{
+        //given
+        GetMonthlyReqDto getMonthlyReqDto = new GetMonthlyReqDto();
+        getMonthlyReqDto.setMonth("7");
+        getMonthlyReqDto.setYear("2025");
+
+        //when
+        ResultActions resultActions = mvc.perform(get("/api/s/worklog/getMonthlyInfo?" + "year=" + getMonthlyReqDto.getYear() + "&month=" + getMonthlyReqDto.getMonth())
+        .contentType(MediaType.APPLICATION_JSON));
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        //then
+        resultActions.andExpect(status().isOk());
+    }
+
 
 
     private void dataSetting() {
         User aaa = userRepository.save(newUser("aaa@naver.com", "aaa"));
 
-        LocalDateTime start1 = LocalDateTime.of(2025, 7, 8, 9, 0, 0);
-        LocalDateTime end1 = LocalDateTime.of(2025, 7, 8, 18, 0, 0);
-        Worklog first = worklogRepository.save(newWorklog(aaa, start1, end1));
         JobType jobType = JobType.builder()
                 .name("치킨집")
                 .payRate(10000L)
                 .build();
         jobTypeRepository.save(jobType);
+
+        LocalDateTime start1 = LocalDateTime.of(2025, 7, 8, 9, 0, 0);
+        LocalDateTime end1 = LocalDateTime.of(2025, 7, 8, 18, 0, 0);
+        Worklog worklog1 = worklogRepository.save(newWorklog(aaa, start1, end1, jobType));
+
+        LocalDateTime start2 = LocalDateTime.of(2025, 7, 9, 9, 0, 0);
+        LocalDateTime end2 = LocalDateTime.of(2025, 7, 9, 18, 0, 0);
+        Worklog worklog2 = worklogRepository.save(newWorklog(aaa, start2, end2, jobType));
+
     }
 
 }

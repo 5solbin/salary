@@ -57,7 +57,7 @@ public class                                                                    
 
         // 유효성 검사 - 시작 시간과 종료 시간 비교
         if (dto.getStartTime().isAfter(dto.getEndTime())) {
-            throw new CustomApiException("시작 시간은 종료 시간보다 빨라야 합니다.");
+            throw new CustomApiException("출근 시간은 퇴근 시간보다 빨라야 합니다.");
         }
 
         // 유효성 검사 - 같은 날짜 내에 시간이 겹치면 안된다.

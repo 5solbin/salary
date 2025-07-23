@@ -42,12 +42,13 @@ public class DummyObject {
                 .build();
     }
 
-    protected Worklog newWorklog(User user,LocalDateTime start, LocalDateTime end) {
+    protected Worklog newWorklog(User user,LocalDateTime start, LocalDateTime end, JobType jobType) {
 
         return Worklog.builder()
                 .startTime(start)
                 .endTime(end)
                 .user(user)
+                .jobType(jobType)
                 .build();
 
     }
